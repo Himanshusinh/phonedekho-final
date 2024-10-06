@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Phone Dekho</title>
+    <link rel="stylesheet" href="styles/style1.css">
+</head>
+<body>
+    <div class="register-container">
+        <img src="Picture2.png" alt="Phone Dekho Logo">
+        <h3>Phone Dekho</h3>
+ 
+        <h2>Create an Account</h2>
+        <form action="/register" method="post">
+            <div class="form-group">
+                <label for="username">Username:</label><br>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <button type="submit" value="submit" id="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="login.HTML" onclick="flipCard()">Login here</a>.</p>
+    </div>
+    <script type="module">
+          // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+        import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js";
+
+  
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+  apiKey: "AIzaSyCx0fKcwoBsU-haiTNauYGTT3oalNBK5nk",
+  authDomain: "phonedekho-9349d.firebaseapp.com",
+  databaseURL: "https://phonedekho-9349d-default-rtdb.firebaseio.com",
+  projectId: "phonedekho-9349d",
+  storageBucket: "phonedekho-9349d.appspot.com",
+  messagingSenderId: "785024322800",
+  appId: "1:785024322800:web:ed5a89874ceb6f7a6ac635"
+};
+
+  // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        const db=getDatabase(app);
+
+        document.getElementById("submit").addEventListener('click' , function(e){
+         e.preventDefault();
+         set(ref(db, 'Register/' + document.getElementById("username").value),
+         {
+        username:document.getElementById("username").value ,
+        email: document.getElementById("email").value ,
+        password: document.getElementById("password").value 
+
+        }).then(() => {
+            alert("Registered Successfully!");
+            // Redirect to smartphones_details.html
+            window.location.href = "smartphones_details.html";
+        }).catch((error) => {
+            console.error("Error registering user: ", error);
+        });
+    });
+
+    </script>
+</body>
+
+</html>

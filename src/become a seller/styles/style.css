@@ -1,0 +1,126 @@
+/* General styling for the body */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #3498db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Styling for the login container */
+.login-container {
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  height: auto;
+  text-align: center;
+  transition: transform 0.3s;
+  /*backface-visibility: hidden;*/
+  /*transform: rotateY(180deg);*/
+
+}
+
+/* Hover effect on the login container */
+.login-container:hover {
+  transform: scale(1.01);
+}
+
+/* Styling for the Phone Dekho logo */
+.login-container img {
+  width: 85px;
+  height: auto;
+  margin-bottom: 0px;
+  margin-top: 10px;
+  border-radius: 10px; /* Rounded corners for the image */
+}
+h2 {
+  color: #2d3436;
+  font-size: 22px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Styling for the login form */
+form {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Styling for labels */
+label {
+  color: #636e72;
+  font-size: 16px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Styling for input fields */
+input {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #bdc3c7;
+  border-radius: 8px;
+  background-color: #ecf0f1;
+  transition: border-color 0.3s;
+  font-size: 16px;
+  outline: none;
+}
+
+/* Styling for focused input fields */
+input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+}
+
+/* Styling for the submit button */
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 97%;
+  height: auto;
+  background-color: #007bff;
+  color: #fff;
+  padding: 12px 18px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+  font-size: 18px;
+}
+
+/* Styling for the button on hover */
+button:hover {
+  background-color: #2980b9;
+}
+
+/* Styling for the "Don't have an account?" text */
+p {
+  text-align: center;
+  margin-top: 15px;
+  color: #636e72;
+  font-size: 16px;
+}
+
+/* Styling for the "Register here" link */
+a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+/* Styling for the link on hover */
+a:hover {
+  text-decoration: underline;
+  color: #2c3e50;
+}

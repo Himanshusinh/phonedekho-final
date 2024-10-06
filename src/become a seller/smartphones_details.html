@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Smartphone Details - Phone Dekho</title>
+    <link rel="stylesheet" href="styles/style2.css">
+</head>
+<body>
+    <div class="add-smartphone-container">
+        <img src="Picture2.png" alt="Phone Dekho Logo">
+        <h3>Phone Dekho</h3>
+        <h2>Add Details For Smartphone</h2>
+        <form id="smartphone-form">
+            <div class="form-group">
+                <label for="gstno">Enter GST Number:</label><br>
+                <input type="text" id="gstno" name="gstno" required>
+            </div>
+
+            <div class="form-group">
+                <label for="store_name">Store Name:</label><br>
+                <input type="text" id="store_name" name="store_name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="location">Store Location:</label><br>
+                <input type="text" id="location" name="location" required>
+            </div>
+
+            <div class="form-group">
+                <label for="brand">Brand:</label><br>
+                <select id="brand" name="brand" required>
+                    <option value="Apple">Apple</option>
+                    <option value="Samsung">Samsung</option>
+                    <option value="OnePlus">OnePlus</option>
+                    <option value="Oppo">Oppo</option>
+                    <option value="Vivo">Vivo</option>
+                    <option value="Iqoo">Iqoo</option>
+                    <option value="Realme">Realme</option>
+                    <option value="Motorola">Motorola</option>
+                    <option value="Xiaomi">Xiaomi</option>
+
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="model">Model Name:</label><br>
+                <input type="text" id="model" name="model" required>
+            </div>
+
+            <div class="form-group">
+                <label for="price">Price:</label><br>
+                <input type="number" id="price" name="price" required>
+            </div>
+
+            <div class="form-group">
+                <label for="quantity">Available Quantity:</label><br>
+                <input type="number" id="quantity" name="quantity" required>
+            </div>
+
+            <div class="form-group">
+                <label for="offer">Offer (if any):</label><br>
+                <input type="text" id="offer" name="offer">
+            </div>
+
+            <button type="submit" value="submit" id="submit">Submit Details</button>
+        </form>
+    </div>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+      import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js";
+
+
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCx0fKcwoBsU-haiTNauYGTT3oalNBK5nk",
+  authDomain: "phonedekho-9349d.firebaseapp.com",
+  databaseURL: "https://phonedekho-9349d-default-rtdb.firebaseio.com",
+  projectId: "phonedekho-9349d",
+  storageBucket: "phonedekho-9349d.appspot.com",
+  messagingSenderId: "785024322800",
+  appId: "1:785024322800:web:ed5a89874ceb6f7a6ac635"
+};
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // Function to handle form submission
+        document.getElementById("smartphone-form").addEventListener('submit', function(e) {
+            e.preventDefault();
+            const gstno = document.getElementById("gstno").value; 
+            const model = document.getElementById("model").value;
+            const brand = document.getElementById("brand").value;
+            const price = document.getElementById("price").value;
+            const offer = document.getElementById("offer").value;
+            const storeName = document.getElementById("store_name").value;
+            const location = document.getElementById("location").value;
+            const quantity = document.getElementById("quantity").value;
+
+            // Push data to Firebase
+            set(ref(db, 'smartphones/'+ document.getElementById("gstno").value), {
+                gstno:gstno,
+                storeName: storeName,
+                location: location,
+                brand: brand,
+                model: model,
+                price: price,
+                offer: offer,
+                quantity: quantity
+            }).then(() => {
+                alert("Smartphone details added successfully!");
+            }).catch((error) => {
+                console.error("Error adding smartphone details: ", error);
+            });
+        });
+    </script>
+</body>
+</html>
